@@ -1,15 +1,12 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import {Provider} from "react-redux";
 import {createRoot} from "react-dom/client";
 
-import ReduxApp from "./components/App_redux";
-import {Provider} from "react-redux";
+import {createStore, applyMiddleware, compose} from 'redux';
 import reducer from './redux/reducers';
 import {logging} from "./redux/midllewares/logging";
-// import App from "./components/App";
 
-import {createStore, applyMiddleware, compose} from 'redux';
-
+import ReduxApp from "./components/App_redux";
 
 const store = createStore(reducer,
     compose(applyMiddleware(logging),window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
